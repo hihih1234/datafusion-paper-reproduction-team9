@@ -6,7 +6,7 @@ import pyarrow.parquet as pq
 from datafusion import SessionContext
 
 SRC = r"data\tpch_sf10_csv"
-DST = r"data\tpch_sf10_parquet_official"
+DST = r"tpch\tpch_dataset"
 
 D = pa.decimal128(15, 2)
 I64 = pa.int64()

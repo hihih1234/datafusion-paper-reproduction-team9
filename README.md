@@ -254,9 +254,67 @@ Các cấu hình được lưu tại:
 
 
 
-Repository có script `src/convert\_tpch\_sf10.py` được nhóm sử dụng trong quá trình chuẩn bị dữ liệu. Quy trình tự động tạo lại toàn bộ dataset TPC-H SF=10 chưa được tích hợp thành một lệnh duy nhất.
+\*\*Chuyển đổi dữ liệu TPC-H từ CSV sang Parquet\*\*
 
 
+
+Nhóm sử dụng script `src/convert\_tpch\_sf10.py` để chuyển đổi bộ dữ liệu TPC-H SF=10 từ CSV sang Parquet.
+
+
+
+Trước khi chạy, cần chuẩn bị 8 file CSV có dòng tiêu đề trong thư mục `data/tpch\_sf10\_csv/`:
+
+
+
+\- `customer.csv`
+
+\- `orders.csv`
+
+\- `lineitem.csv`
+
+\- `part.csv`
+
+\- `partsupp.csv`
+
+\- `region.csv`
+
+\- `supplier.csv`
+
+\- `nation.csv`
+
+
+
+Sau khi chuẩn bị dữ liệu và cài đặt thư viện, mở CMD tại thư mục gốc repository và chạy:
+
+
+
+```cmd
+
+.venv\\Scripts\\python.exe src\\convert\_tpch\_sf10.py
+
+```
+
+
+
+Script thực hiện các công việc:
+
+
+
+1\. Đọc 8 file CSV theo schema đã khai báo.
+
+2\. Chuyển đổi dữ liệu sang định dạng Parquet với nén ZSTD.
+
+3\. Kiểm tra số dòng và định dạng nén của từng bảng.
+
+4\. Lưu dữ liệu đầu ra vào `tpch/tpch\_dataset/`, đúng đường dẫn mà benchmark sử dụng.
+
+
+
+Lưu ý: Script xóa thư mục Parquet đầu ra cũ của từng bảng trước khi chuyển đổi. Cần sao lưu dữ liệu hiện có trước khi chạy lại.
+
+
+
+Repository không bao gồm các file CSV đầu vào và chưa tích hợp công cụ tự động tạo hoặc tải bộ dữ liệu TPC-H SF=10.
 
 \*\*b. ClickBench\*\*
 
