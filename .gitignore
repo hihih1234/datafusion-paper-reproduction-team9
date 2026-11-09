@@ -1,0 +1,26 @@
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Large datasets
+data/
+datasets/
+*.parquet
+G1_1e7_1e2_5_0.csv
+
+# Temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db*.duckdb
+*.duckdb.wal
+*.csv.gz
+tpch_dataset/
+hits_multi/
